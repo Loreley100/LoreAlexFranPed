@@ -3,8 +3,14 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export default function Form() {
+    //funcion para redirigir
+    let navigate=useNavigate();
+
+
+    
 //declaracion o dorma que debe de tener nuestro formulario
     const schema = yup.object().shape({
         name: yup.string("solo ingresar letras").required("El nombre es requerido"),
@@ -24,6 +30,8 @@ export default function Form() {
         resolver: yupResolver(schema)
     })
     function onSubmit(data) {
+        //{ state: { userData: obj } }
+        navigate("/login", { data } )
         console.log(data)
     }
     
