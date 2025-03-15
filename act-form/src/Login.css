@@ -1,0 +1,29 @@
+body{
+    background-color: white;
+}
+
+.form-login{
+    display: inline-block;
+    flex-direction: column;
+    gap: "10px";
+}
+
+.text-error{
+    color: red;
+    font-size: 12px;
+}
+
+label{
+    color: brown;
+    text-decoration: solid;
+}
+
+button{
+    color: white;
+    background-color: brown;
+    width: 140px;
+}
+
+p{
+    color: #b60202;
+}
