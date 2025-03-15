@@ -46,16 +46,28 @@ export default function Login() {
                 <h1>Login</h1>
                 <form className='login-form' onSubmit={handleSubmit(onSubmit)}>
                     <div>
+<<<<<<< HEAD
                         <label htmlFor="">Correo eletronico: </label>
+=======
+                        <label htmlFor="">Correo electronico: </label>
+>>>>>>> dev-pedro
                         <input type="text" placeholder="loreuwu@gmail.com" {...register("email")} />
                         { errors.email && <p className='error'>{errors.email?.message}</p> }
                     </div>
                     <div>
+<<<<<<< HEAD
                         <label htmlFor="">Contraseña</label>
                         <input type="password" placeholder="Password" {...register("pass")}/>
                         { errors.pass && <p className='error'>{errors.pass?.message}</p> }
                     </div>
                     <input type="submit" value="Ingresar" />
+=======
+                        <label htmlFor="">Contraseña: </label>
+                        <input type="password" placeholder="Password" {...register("pass")}/>
+                        { errors.pass && <p className='error'>{errors.pass?.message}</p> }
+                    </div>
+                    <input className='button' type="submit" value="Ingresar" />
+>>>>>>> dev-pedro
                 </form>
             </div>
         </div>

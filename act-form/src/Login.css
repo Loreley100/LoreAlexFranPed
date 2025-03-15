@@ -1,5 +1,14 @@
+<<<<<<< HEAD
 .form-login{
     display: flex;
+=======
+body{
+    background-color: white;
+}
+
+.form-login{
+    display: inline-block;
+>>>>>>> dev-pedro
     flex-direction: column;
     gap: "10px";
 }
@@ -7,4 +16,22 @@
 .text-error{
     color: red;
     font-size: 12px;
+<<<<<<< HEAD
+=======
+}
+
+label{
+    color: brown;
+    text-decoration: solid;
+}
+
+button{
+    color: white;
+    background-color: brown;
+    width: 140px;
+}
+
+p{
+    color: #b60202;
+>>>>>>> dev-pedro
 }
