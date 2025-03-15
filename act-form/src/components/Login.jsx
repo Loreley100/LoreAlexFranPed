@@ -3,14 +3,15 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { useLocation, useNavigate } from "react-router-dom"; // Para recibir informacion del otro componente
+import { data, useLocation, useNavigate } from "react-router-dom"; // Para recibir informacion del otro componente
 
 import './../Login.css'
 
 
 export default function Login() {
     const navigate = useNavigate();
-    const { data } = useLocation(); // Se recibe la informacion del otro componente
+    let location = useLocation();
+    const data = location.state // Se recibe la informacion del otro componente
 
     const numIntentos = useRef(0)
 
@@ -28,7 +29,8 @@ export default function Login() {
     function onSubmit(sigIn){
         // Si los datos son correctos y el numero de intentos es menor que 3 se redirige a la pagina principal
         if( sigIn.email === data.email && sigIn.pass === data.pass && numIntentos.current < 3){
-            navigate("/perfil", { data });
+            console.log(data)
+            navigate("/perfil", { state: data });
             numIntentos.current = 0
         }
         else{
@@ -45,13 +47,13 @@ export default function Login() {
                 <form className='login-form' onSubmit={handleSubmit(onSubmit)}>
                     <div>
                         <label htmlFor="">Correo eletronico: </label>
-                        <input type="text" placeholder="loreuwu@gmail.com" />
+                        <input type="text" placeholder="loreuwu@gmail.com" {...register("email")} />
                         { errors.email && <p className='error'>{errors.email?.message}</p> }
                     </div>
                     <div>
                         <label htmlFor="">Contraseña</label>
-                        <input type="password" placeholder="Password" />
-                        { errors.email && <p className='error'>{errors.pass?.message}</p> }
+                        <input type="password" placeholder="Password" {...register("pass")}/>
+                        { errors.pass && <p className='error'>{errors.pass?.message}</p> }
                     </div>
                     <input type="submit" value="Ingresar" />
                 </form>

@@ -31,7 +31,7 @@ export default function Form() {
     })
     function onSubmit(data) {
         //{ state: { userData: obj } }
-        navigate("/login", { data } )
+        navigate("/login", {state: data } )
         console.log(data)
     }
     
