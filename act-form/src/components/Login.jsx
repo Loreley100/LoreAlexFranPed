@@ -9,7 +9,10 @@ import './../Login.css'
 
 
 export default function Login() {
-    
+    const navigate = useNavigate();
+    const { data } = useLocation(); // Se recibe la informacion del otro componente
+
+    const numIntentos = useRef(0)
 
     const schema = yup.object().shape({ // Se hace una declaracion de que es lo que se quiere
         email: yup.string().required("Ingrese su correo").email("Formato de email incorrecto"),
@@ -22,7 +25,17 @@ export default function Login() {
         resolver: yupResolver(schema)
     })
 
-    
+    function onSubmit(sigIn){
+        // Si los datos son correctos y el numero de intentos es menor que 3 se redirige a la pagina principal
+        if( sigIn.email === data.email && sigIn.pass === data.pass && numIntentos.current < 3){
+            navigate("/perfil", { data });
+            numIntentos.current = 0
+        }
+        else{
+            numIntentos.current++
+            alert("Contraseña o correo incorrecto, intento: " + numIntentos.current)
+        }
+    }
 
 
     return (
